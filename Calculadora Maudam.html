@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAUDAM SAS - Crédito Prendario</title>
+
+  
+
+<!-- Tu número de WhatsApp -->
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #84c8b2 0%, #1e293b 100%);
+      color: white;
+      min-height: 100vh;
+      padding: 20px 10px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      color: #1e293b;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.4);
+    }
+    header {
+      background: linear-gradient(135deg, #84c8b2, #64b28a);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      height: 90px;
+      margin-bottom: 15px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 800;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      opacity: 0.95;
+    }
+    .calc-section {
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .input-monto {
+      width: 100%;
+      max-width: 500px;
+      padding: 22px;
+      font-size: 2.2rem;
+      text-align: center;
+      border: 4px solid #e2e8f0;
+      border-radius: 18px;
+      margin: 30px auto;
+      display: block;
+    }
+    .input-monto:focus {
+      outline: none;
+      border-color: #568b71;
+      box-shadow: 0 0 0 6px rgba(77, 113, 104, 0.25);
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .card {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 20px;
+      padding: 35px 25px;
+      text-align: center;
+      border: 3px solid #e2e8f0;
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-15px);
+      border-color: #25d366;
+      box-shadow: 0 25px 50px rgba(37,211,102,0.25);
+    }
+    .meses { font-size: 1.8rem; font-weight: bold; color: #72a091; }
+    .cuota { font-size: 3.4rem; font-weight: 900; color: #72a091; margin: 15px 0 8px; }
+    .total { font-size: 1.3rem; color: #72a091; font-weight: 600; }
+    .coef { margin-top: 12px; font-size: 1rem; background: #01040f; color: #efeff5; padding: 8px 20px; border-radius: 30px; font-weight: bold; }
+
+    .whatsapp-btn {
+      margin: 50px auto;
+      padding: 20px 40px;
+      background: #25d366;
+      color: white;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+      transition: all 0.3s;
+    }
+    .whatsapp-btn:hover {
+      background: #128c7e;
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(37,211,102,0.5);
+    }
+    .whatsapp-btn img {
+      height: 40px;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 35px;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .cuota { font-size: 2.8rem; }
+      .whatsapp-btn { font-size: 1.4rem; padding: 18px 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <!-- CAMBIA ESTA URL POR EL LOGO DE TU EMPRESA -->
+      <img src="IMAGEN.jpg" alt="Logo de tu empresa" class="logo">
+      <h1>Crédito Prendario</h1>
+      <p class="subtitle">Simulá tu cuota en segundos • Hasta 60 meses</p>
+      <p class="subtitle">Porcentajes de Financiacion de acuerdo a Antiguedad</p>
+      <div class="calc-container">
+  <h2>¿Cuánto te prestamos por tu auto?</h2>
+  <p class="descripcion">Ingresá el valor y año del vehículo → te decimos al instante el monto máximo que podés obtener</p>
+
+  <div class="inputs">
+    <div>
+         <h2 style="color:#527866; font-size:2rem; margin:0;">
+
+      <label>Valor de Info del vehículo ($)</label>
+      </h2>
+      <input type="number" id="valor" placeholder="15.000.000" value="15000000" min="1000000" step="100000">
+    </div>
+    <div>
+        <h2 style="color:#527866; font-size:2rem; margin:0;">
+      <label>Año del vehículo</label>
+      </h2>
+      <select id="anio">
+        <option value="2025">2025 - 2024 (0 KM a 1 año)</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2014">2013</option>
+        <option value="2014">2012</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="resultado">
+    <h2 style="color:#527866; font-size:2rem; margin:0;">
+    <strong>Monto máximo que te prestamos:</strong><br>
+    </h2>
+    <h2 style="color:#f10707fe; font-size:2rem; margin:0;">
+    <span id="montoFinal">$0</span>
+    </h2>
+    <div class="porcentaje" id="porcentajeTexto">Calculando...</div>
+  </div>
+
+  <div class="tabla">
+     <h2 style="color:#527866; font-size:2rem; margin:0;">
+    <strong>Porcentajes según antigüedad:</strong><br><br>
+    </h2>
+    0 KM a 1 año → 80% / 75%<br>
+    2 a 5 años → 70%<br>
+    6 a 10 años → 60%<br>
+    11 a 13 años → 50%
+  </div>
+</div>
+
+<script>
+  const valorInput = document.getElementById('valor');
+  const anioSelect = document.getElementById('anio');
+  const montoSpan = document.getElementById('montoFinal');
+  const porcSpan = document.getElementById('porcentajeTexto');
+
+  function calcularPrestamo() {
+    let valor = parseFloat(valorInput.value) || 0;
+    let anio = parseInt(anioSelect.value);
+
+    let porcentaje = 0;
+    let textoPorc = "";
+
+    // Lógica según tu tabla exacta
+    if (anio >= 2024) { // 0 KM a 1 año
+      porcentaje = 80; // o 75%, podés cambiarlo fácil
+      textoPorc = "80% (0 KM a 1 año)";
+    } else if (anio >= 2020 && anio <= 2023) { // 2 a 5 años
+      porcentaje = 70;
+      textoPorc = "70% (2 a 5 años)";
+    } else if (anio >= 2015 && anio <= 2019) { // 6 a 10 años
+      porcentaje = 60;
+      textoPorc = "60% (6 a 10 años)";
+    } else if (anio >= 2012 && anio <= 2014) { // 11 a 13 años
+      porcentaje = 50;
+      textoPorc = "50% (11 a 13 años)";
+    } else {
+      porcentaje = 0;
+      textoPorc = "No financiamos este año";
+    }
+
+    let montoMaximo = Math.floor(valor * porcentaje / 100 / 1000) * 1000; // redondea a miles abajo
+
+    montoSpan.textContent = '$' + montoMaximo.toLocaleString('es-AR');
+    porcSpan.textContent = textoPorc;
+
+    // Si querés usar 75% para algunos 0KM, cambia arriba: if (anio >= 2024) porcentaje = 75;
+  }
+
+  valorInput.addEventListener('input', calcularPrestamo);
+  anioSelect.addEventListener('change', calcularPrestamo);
+  window.addEventListener('load', calcularPrestamo);
+</script>
+    </header>
+
+<div style="text-align:center; margin:40px 0 30px;">
+  <h2 style="color:#527866; font-size:2rem; margin:0;">
+    Monto a Financiar en $<span id="montoFinanciar"></span>
+  </h2>
+  <p style="color:#64748b; font-size:1.1rem; margin:5px 0 0;">
+     <h3 style="color:#046be8; font-size:2rem; margin:0;">
+    (Gastos Otorgamiento MAUDAM = $ 500.000
+     SUMAR O RESTAR AL CAPITAL A FINANCIAR)</p>
+    </h3>
+</div>
+    <div class="calc-section">
+      <input type="number" id="monto" class="input-monto" placeholder="800000" value="800000" min="10000" step="1000">
+
+      <div class="cards-grid" id="resultados">
+        <!-- Las tarjetas se llenan con JavaScript -->
+      </div>
+
+      <!-- Botón WhatsApp -->
+      <button class="whatsapp-btn" id="btnWhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        Enviar simulación por WhatsApp
+      </button>
+    </div>
+
+
+    <footer>
+      MAUDAM SAS • Créditos prendarios en pesos • Sujeto a aprobación crediticia • Contamos con 5 ofertas • Consulta por Linea UVA
+    </footer>
+  </div>
+
+  <script>
+    const montoInput = document.getElementById('monto');
+    const resultadosDiv = document.getElementById('resultados');
+    const btnWhatsApp = document.getElementById('btnWhatsApp');
+
+    // TUS COEFICIENTES REALES (por cada $1.000)
+    const coeficientes = {
+      12: 131.88,
+      24: 87.585,
+      36: 75.916,
+      48: 71.108,
+      60: 68.857
+    };
+
+    // Plantilla de tarjeta
+    const plantillaCard = (meses, coef) => `
+      <div class="card">
+        <div class="meses">${meses} meses</div>
+        <div class="cuota" id="cuota${meses}">$0</div>
+        <div class="total">Total a pagar: <strong id="total${meses}">$0</strong></div>
+        <div class="coef">Coeficiente: ${coef.toLocaleString('es-AR', {minimumFractionDigits: 3})}</div>
+      </div>
+    `;
+
+    // Crear las 5 tarjetas al cargar
+    Object.keys(coeficientes).forEach(meses => {
+      resultadosDiv.innerHTML += plantillaCard(meses, coeficientes[meses]);
+    });
+
+    function calcular() {
+      let monto = parseFloat(montoInput.value) || 0;
+      let textoWhatsApp = `*Simulación Crédito Prendario*%0A%0AMonto solicitado: *$${monto.toLocaleString('es-AR')}*%0A%0A`;
+
+      Object.keys(coeficientes).forEach(meses => {
+        let cuota = (monto * coeficientes[meses]) / 1000;
+        let total = cuota * meses;
+
+        document.getElementById(`cuota${meses}`).textContent = '$' + Math.round(cuota).toLocaleString('es-AR');
+        document.getElementById(`total${meses}`).textContent = '$' + Math.round(total).toLocaleString('es-AR');
+
+        textoWhatsApp += `${meses} meses → *$${Math.round(cuota).toLocaleString('es-AR')}* por mes%0ATotal a pagar: $${Math.round(total).toLocaleString('es-AR')}%0A%0A`;
+      });
+
+      // Actualizar botón WhatsApp
+      const telefono = "5493571311891"; // CAMBIA AQUÍ TU NÚMERO (con código de país, sin + ni 15)
+      btnWhatsApp.onclick = () => {
+        window.open(`https://wa.me/${telefono}?text=${textoWhatsApp}Quiero más info sobre este crédito`, '_blank');
+      };
+    }
+
+    montoInput.addEventListener('input', calcular);
+    window.addEventListener('load', calcular);
+  </script>
+</body>
+</html>
